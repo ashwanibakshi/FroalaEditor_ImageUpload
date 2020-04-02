@@ -9,9 +9,28 @@
     <title>Document</title>
 </head>
 <body>
-    <textarea id="example"></textarea>
+    <form action="/" method="POST">
+    <textarea id="example" name="editdata"></textarea><br>
+    <button type="submit">Save</button>
+</form>
+<br><br>
+<hr>
+<br>
+<%if(edata.length>0){%>
+<table>
+    <%for(var x=0;x< edata.length;x++){%>
+    <tr>
+        <td><%- edata[x].data%></td>
+    </tr>
+    <%}%>
+</table>
+<%}%>
+
     <script>
-    var editor = new FroalaEditor("#example")
+    var editor = new FroalaEditor("#example",{
+        // Set the image upload URL.
+    imageUploadURL: '/upload_image'
+    })
     </script>
 </body>
 </html>
